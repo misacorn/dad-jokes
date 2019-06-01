@@ -17,13 +17,17 @@ class JokeList extends Component {
       jokeList.push(res.data.joke);
     }
     this.setState({ jokes: jokeList });
-    console.log(this.state.jokes);
   }
   render() {
     return (
-      <>
+      <div className="JokeList">
         <h1>Dad Jokes</h1>
-      </>
+        <ul className="JokeList-joke">
+          {this.state.jokes.map((joke, index) => (
+            <li key={index}>{joke}</li>
+          ))}
+        </ul>
+      </div>
     );
   }
 }
