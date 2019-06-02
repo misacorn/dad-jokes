@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import Icon from "./laughing-icon";
+
 class JokeList extends Component {
   state = { jokes: [] };
 
@@ -21,7 +23,12 @@ class JokeList extends Component {
   render() {
     return (
       <div className="JokeList">
-        <h1>Dad Jokes</h1>
+        <div className="JokeList-sidebar">
+          <h1 className="JokeList-title">Dad Jokes</h1>
+          <Icon />
+          <button className="JokeList-getmore">New Jokes</button>
+        </div>
+
         <ul className="JokeList-joke">
           {this.state.jokes.map((joke, index) => (
             <li key={index}>{joke}</li>
