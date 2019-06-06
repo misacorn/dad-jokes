@@ -1,17 +1,12 @@
 import React from "react";
 
-const SVG = ({
-  style = {},
-  fill = "#000",
-  width = "0%",
-  className = "",
-  viewBox = "0 0 512 512"
-}) => (
+const SVG = ({ style = {}, fill = "#000", width }) => (
   <svg
     id="Layer_1"
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512"
+    width="50%"
   >
     <title>laughing-tears</title>
     <g id="laughing-tears">

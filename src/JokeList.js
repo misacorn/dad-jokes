@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import "./JokeList.css";
 import Icon from "./laughing-icon";
 
 class JokeList extends Component {
@@ -24,12 +25,11 @@ class JokeList extends Component {
     return (
       <div className="JokeList">
         <div className="JokeList-sidebar">
-          <h1 className="JokeList-title">Dad Jokes</h1>
+          <h3 className="JokeList-title">Dad Jokes</h3>
           <Icon />
           <button className="JokeList-getmore">New Jokes</button>
         </div>
-
-        <ul className="JokeList-joke">
+        <ul className="JokeList-jokes">
           {this.state.jokes.map((joke, index) => (
             <li key={index}>{joke}</li>
           ))}
