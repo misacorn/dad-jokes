@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import Joke from "./Joke";
 import "./JokeList.css";
 import Icon from "./laughing-icon";
 
@@ -12,14 +13,14 @@ class JokeList extends Component {
   };
 
   async componentDidMount() {
-    let jokeList = [];
-    while (jokeList.length < this.props.numJokesToGet) {
+    let jokes = [];
+    while (jokes.length < this.props.numJokesToGet) {
       let res = await axios.get("https://icanhazdadjoke.com/", {
         headers: { Accept: "application/json" }
       });
-      jokeList.push(res.data.joke);
+      jokes.push({ text: res.data.joke, votes: 0 });
     }
-    this.setState({ jokes: jokeList });
+    this.setState({ jokes });
   }
   render() {
     return (
@@ -30,8 +31,8 @@ class JokeList extends Component {
           <button className="JokeList-getmore">New Jokes</button>
         </div>
         <ul className="JokeList-jokes">
-          {this.state.jokes.map((joke, index) => (
-            <li key={index}>{joke}</li>
+          {this.state.jokes.map((j, index) => (
+            <Joke key={index} votes={j.votes} text={j.text} />
           ))}
         </ul>
       </div>
