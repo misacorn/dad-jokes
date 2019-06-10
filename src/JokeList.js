@@ -19,18 +19,18 @@ class JokeList extends Component {
       let res = await axios.get("https://icanhazdadjoke.com/", {
         headers: { Accept: "application/json" }
       });
-      jokes.push({ id: uuid, text: res.data.joke, votes: 0 });
+      jokes.push({ id: uuid(), text: res.data.joke, votes: 0 });
     }
     this.setState({ jokes });
   }
 
-  handleVote(id, delta) {
+  handleVote = (id, delta) => {
     this.setState(prevState => ({
       jokes: prevState.jokes.map(j =>
         j.id === id ? { ...j, votes: j.votes + delta } : j
       )
     }));
-  }
+  };
 
   render() {
     return (
@@ -42,7 +42,17 @@ class JokeList extends Component {
         </div>
         <ul className="JokeList-jokes">
           {this.state.jokes.map(j => (
-            <Joke key={j.id} votes={j.votes} text={j.text} />
+            <Joke
+              key={j.id}
+              votes={j.votes}
+              text={j.text}
+              upvote={() => {
+                this.handleVote(j.id, 1);
+              }}
+              downvote={() => {
+                this.handleVote(j.id, -1);
+              }}
+            />
           ))}
         </ul>
       </div>
