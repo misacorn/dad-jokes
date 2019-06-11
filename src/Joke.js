@@ -14,7 +14,7 @@ class Joke extends Component {
         </div>
         <div className="Joke-text">{this.props.text}</div>
         <div className="Joke-laughing">
-          <i class="em em-rolling_on_the_floor_laughing" />
+          <i className="em em-rolling_on_the_floor_laughing" />
         </div>
       </div>
     );
