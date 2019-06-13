@@ -6,9 +6,19 @@
   font-family: "Montserrat", sans-serif;
   color: white;
   background: rgb(238, 174, 202);
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
+  background-image: linear-gradient(
+    to right bottom,
+    #845ec2,
+    #646cc5,
+    #4875c1,
+    #367cb7,
+    #3880aa,
+    #3d8aa4,
+    #50929c,
+    #679896,
+    #84a597,
+    #a2b19d,
+    #bebdaa,
+    #d5cabd
   );
 }
