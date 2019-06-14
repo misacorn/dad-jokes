@@ -14,14 +14,13 @@ class JokeList extends Component {
   };
 
   componentDidMount() {
-    this.setState({ loading: true });
-    // this.getJokes();
+    this.getNewJokes();
   }
 
-  getNewJokes() {
+  getNewJokes = () => {
     this.setState({ loading: true });
     this.getJokes();
-  }
+  };
 
   async getJokes() {
     let jokes = [];
