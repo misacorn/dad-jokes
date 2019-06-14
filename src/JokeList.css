@@ -29,3 +29,8 @@
   width: 70%;
   overflow: scroll;
 }
+
+.Joke-spinner i {
+  color: white;
+  widows: 50px;
+}

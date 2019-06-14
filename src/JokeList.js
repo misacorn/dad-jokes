@@ -7,13 +7,22 @@ import "./JokeList.css";
 import Icon from "./laughing-icon";
 
 class JokeList extends Component {
-  state = { jokes: [] };
+  state = { jokes: [], loading: false };
 
   static defaultProps = {
     numJokesToGet: 10
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.setState({ loading: true });
+    this.getJokes();
+  }
+  
+  handleClick() {
+    this.getJokes();
+  }
+
+  async getJokes() {
     let jokes = [];
     while (jokes.length < this.props.numJokesToGet) {
       let res = await axios.get("https://icanhazdadjoke.com/", {
@@ -21,7 +30,7 @@ class JokeList extends Component {
       });
       jokes.push({ id: uuid(), text: res.data.joke, votes: 0 });
     }
-    this.setState({ jokes });
+    this.setState({ jokes, loading: false });
   }
 
   handleVote = (id, delta) => {
@@ -31,30 +40,39 @@ class JokeList extends Component {
       )
     }));
   };
-
+  
   render() {
     return (
       <div className="JokeList">
         <div className="JokeList-sidebar">
           <h3 className="JokeList-title">Dad Jokes</h3>
           <Icon />
-          <button className="JokeList-getmore">New Jokes</button>
+          <button className="JokeList-getmore" onClick={this.handleClick}>
+            New Jokes
+          </button>
         </div>
-        <ul className="JokeList-jokes">
-          {this.state.jokes.map(j => (
-            <Joke
-              key={j.id}
-              votes={j.votes}
-              text={j.text}
-              upvote={() => {
-                this.handleVote(j.id, 1);
-              }}
-              downvote={() => {
-                this.handleVote(j.id, -1);
-              }}
-            />
-          ))}
-        </ul>
+        {this.state.loading ? (
+          <div className="Joke-spinner">
+            <i className="far fa-8x fa-laugh fa-spin" />
+            <h1 className="JokeList-title">Loading...</h1>
+          </div>
+        ) : (
+          <ul className="JokeList-jokes">
+            {this.state.jokes.map(j => (
+              <Joke
+                key={j.id}
+                votes={j.votes}
+                text={j.text}
+                upvote={() => {
+                  this.handleVote(j.id, 1);
+                }}
+                downvote={() => {
+                  this.handleVote(j.id, -1);
+                }}
+              />
+            ))}
+          </ul>
+        )}
       </div>
     );
   }
