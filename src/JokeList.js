@@ -15,10 +15,11 @@ class JokeList extends Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-    this.getJokes();
+    // this.getJokes();
   }
-  
-  handleClick() {
+
+  getNewJokes() {
+    this.setState({ loading: true });
     this.getJokes();
   }
 
@@ -40,14 +41,14 @@ class JokeList extends Component {
       )
     }));
   };
-  
+
   render() {
     return (
       <div className="JokeList">
         <div className="JokeList-sidebar">
           <h3 className="JokeList-title">Dad Jokes</h3>
           <Icon />
-          <button className="JokeList-getmore" onClick={this.handleClick}>
+          <button className="JokeList-getmore" onClick={this.getNewJokes}>
             New Jokes
           </button>
         </div>
