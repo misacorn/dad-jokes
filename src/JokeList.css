@@ -34,5 +34,8 @@
   margin-left: 20%;
   margin-top: 5%;
   text-align: center;
-  font-size: 100px;
+}
+
+.Joke-spinner i {
+  font-size: 80px;
 }
