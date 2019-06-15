@@ -24,7 +24,6 @@
 
 .JokeList-jokes {
   height: 90%;
-  /* background-color: white; */
   align-self: center;
   width: 70%;
   overflow: scroll;
@@ -38,4 +37,22 @@
 
 .Joke-spinner i {
   font-size: 80px;
+}
+
+.JokeList-getmore {
+  font-size: 1rem;
+  width: 50%;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  color: white;
+  font-weight: 700;
+  margin: 2rem;
+  outline: none;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  border: white solid 2px;
+  line-height: 50%;
 }
