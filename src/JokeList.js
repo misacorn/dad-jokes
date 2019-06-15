@@ -22,7 +22,7 @@ class JokeList extends Component {
     this.getJokes();
   };
 
-  async getJokes() {
+  getJokes = async () => {
     let jokes = [];
     while (jokes.length < this.props.numJokesToGet) {
       let res = await axios.get("https://icanhazdadjoke.com/", {
@@ -31,7 +31,7 @@ class JokeList extends Component {
       jokes.push({ id: uuid(), text: res.data.joke, votes: 0 });
     }
     this.setState({ jokes, loading: false });
-  }
+  };
 
   handleVote = (id, delta) => {
     this.setState(prevState => ({
