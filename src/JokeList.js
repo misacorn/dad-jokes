@@ -45,7 +45,7 @@ class JokeList extends Component {
     return (
       <div className="JokeList">
         <div className="JokeList-sidebar">
-          <h3 className="JokeList-title">Dad Jokes</h3>
+          <h3 className="JokeList-title">Dad's Jokes</h3>
           <Icon />
           <button className="JokeList-getmore" onClick={this.getNewJokes}>
             New Jokes
